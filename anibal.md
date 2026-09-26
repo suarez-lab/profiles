@@ -12,7 +12,8 @@ before anyone has written a line of it.
 
 Most of my recent work is AI-assisted business platforms on Google Cloud —
 conversational systems, operational back-offices, data pipelines — for clients in
-`<sectores>` across Spain and LATAM.
+real estate, financial services and consumer/social platforms across Spain and LATAM.
+Earlier career: telecommunications carrier networks and account management.
 
 ## What I actually do
 
@@ -37,4 +38,4 @@ production taught me that I did not know beforehand.
 
 ## Contact
 
-`<email>` · `<LinkedIn>`
+[suarez.anibal@gmail.com](mailto:suarez.anibal@gmail.com) · [LinkedIn](https://www.linkedin.com/in/anibalrent4all)

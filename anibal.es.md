@@ -12,7 +12,8 @@ mantener un sistema antes de que nadie haya escrito una línea.
 
 Casi todo mi trabajo reciente son plataformas de negocio asistidas por IA sobre Google
 Cloud —sistemas conversacionales, back-offices operativos, pipelines de datos— para
-clientes de `<sectores>` en España y LATAM.
+clientes de inmobiliario, servicios financieros y plataformas de consumo y social en
+España y LATAM. Antes: redes de operador de telecomunicaciones y dirección de cuentas.
 
 ## A qué me dedico en la práctica
 
@@ -38,4 +39,4 @@ me enseñó producción y que antes no sabía.
 
 ## Contacto
 
-`<email>` · `<LinkedIn>`
+[suarez.anibal@gmail.com](mailto:suarez.anibal@gmail.com) · [LinkedIn](https://www.linkedin.com/in/anibalrent4all)
