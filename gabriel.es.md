@@ -47,4 +47,4 @@ no solo que pasen los tests.
 
 ## Contacto
 
-[suarez.gabriel03@gmail.com](mailto:suarez.gabriel03@gmail.com) · `<LinkedIn>`
+[suarez.gabriel03@gmail.com](mailto:suarez.gabriel03@gmail.com) · [LinkedIn](https://www.linkedin.com/in/gabriel-suarez-82726b251/)
