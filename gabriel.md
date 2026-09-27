@@ -44,6 +44,7 @@ the tests pass.
 
 - [case-studies](https://github.com/suarez-lab/case-studies) — production systems I contributed to, with [Aníbal](anibal.md)
 - [toolkit](https://github.com/suarez-lab/toolkit) — small, tested, reusable
+- [theses](theses/README.md) — what the two dissertations were actually about
 
 ## Contact
 

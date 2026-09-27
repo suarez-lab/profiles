@@ -42,8 +42,9 @@ no solo que pasen los tests.
 
 ## Trabajo
 
-- [case-studies](https://github.com/suarez-lab/case-studies) — sistemas en producción en los que he colaborado, con [Aníbal](anibal.md)
+- [case-studies](https://github.com/suarez-lab/case-studies) — sistemas en producción en los que he colaborado, con [Aníbal](anibal.es.md)
 - [toolkit](https://github.com/suarez-lab/toolkit) — piezas pequeñas, probadas y reutilizables
+- [tesis](theses/README.es.md) — de qué iban de verdad las dos memorias
 
 ## Contacto
 
