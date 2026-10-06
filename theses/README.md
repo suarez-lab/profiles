@@ -2,103 +2,91 @@
 
 **English** · [Español](README.es.md)
 
-`Universidad Politécnica de Madrid` · `Pure mathematics` · `BSc + MSc`
+Universidad Politécnica de Madrid · BSc Mathematics and Computing · MSc Advanced Mathematics
 
-Two dissertations along the same line: **Sobolev orthogonal polynomials**, approached
-first through their zeros and then through the operator that generates them. Summarised
-here for a reader who is not a specialist. The formal statements, the proofs and the
-bibliography are in the dissertations themselves, which are not published in this
-repository.
+My two dissertations study Sobolev orthogonal polynomials: first their zeros,
+then the multiplication operator and its matrix representation. The public
+repositories below contain the mathematical sources and available computational
+material. This page summarises their scope for a reader assessing my work.
 
-## The setting, and why it is not routine
+## MSc thesis — multiplication operators in discrete Sobolev spaces
 
-Classical orthogonal polynomials come from an inner product that only weighs values:
+*Spectral and Matrix Analysis of the Multiplication Operator in Discrete Sobolev
+Spaces* · **9.5/10**
 
-```
-⟨f, g⟩ = ∫ f(x) g(x) dμ(x)
-```
+**Problem.** For a polynomial inner product with discrete derivative terms,
+multiplication $Dp(z)=zp(z)$ can be unbounded. The thesis studies how
+finite-codimension restrictions control that failure and how it appears in
+finite matrix sections.
 
-A **Sobolev** inner product also weighs derivatives. In the *discrete* case, the
-derivative terms are evaluations at finitely many points:
+**Mathematical work.** The manuscript studies a Gelfand-type index $Q_k(D)$,
+defined as an infimum of restriction norms on polynomial subspaces of
+codimension at most $k$, allowing the value $+\infty$. This is the
+restriction-based viewpoint of Gelfand numbers.
 
-```
-⟨f, g⟩ = ∫ f(x) g(x) dμ(x) + Σ  λ_k · f^(j_k)(c_k) · g^(j_k)(c_k)
-```
+For the configuration of normalized circle measure of radius $R$ and $N$
+distinct first-derivative atoms with unit weights, let $m$ count the atoms on or
+outside the circle. The manuscript establishes:
 
-That small addition removes two guarantees that the classical theory gives for free:
+- $Q_k(D)=+\infty$ for $0\le k<m$;
+- $Q_k(D)$ is finite for $m\le k<N$;
+- $Q_k(D)=R$ for $k\ge N$.
 
-- **The zeros need no longer stay inside the interval of orthogonality.** They can leave
-  it, and they can leave the real line. Anything built on the classical location
-  argument — quadrature rules, approximation bounds — has to be re-derived rather than
-  inherited.
-- **Multiplication by `x`, the operator `f ↦ x·f`, need no longer be bounded.** In the
-  classical case it is the well-behaved object the whole theory rests on. Here its
-  boundedness is a question, and the answer depends on the points `c_k`, the orders
-  `j_k` and the masses `λ_k`.
+The first finite index is therefore $Q_m(D)$. This statement is about the
+specified configuration; it is not a universal detector for arbitrary Sobolev
+inner products. The distinction between first finiteness and eventual equality
+to $R$ matters.
 
-The two questions are the same question. The norm of the multiplication operator is what
-confines the zeros; if the operator is unbounded, the confinement argument is gone.
+**Computational work.** Maple routines investigate finite Hessenberg
+representations and their singular values. Eigenvalues of principal sections
+give the corresponding orthogonal-polynomial zeros; the manuscript relates
+limits of ordered singular values to $Q_k(D)$. Finite computations illustrate
+these results and do not prove an asymptotic statement by themselves.
 
-## MSc thesis — the multiplication operator in discrete Sobolev spaces
+**Public evidence.** [Repository and overview](https://github.com/Gabotelli/sobolev-multiplication-operators) ·
+[Main manuscript source](https://github.com/Gabotelli/sobolev-multiplication-operators/blob/master/Plantilla%20TFM/main.tex) ·
+[Circle-measure results](https://github.com/Gabotelli/sobolev-multiplication-operators/blob/master/Plantilla%20TFM/chapters/capitulo3-estabilizacion.tex) ·
+[Defense source](https://github.com/Gabotelli/sobolev-multiplication-operators/blob/master/Plantilla%20TFM/presentacion/defensa.tex).
 
-A spectral and matrix analysis of that operator: **boundedness, point evaluations, zero
-localisation.**
-
-The connecting object is the **point evaluation** functional, `f ↦ f^(j)(c)`. Which of
-these are bounded on the space is precisely what decides the behaviour of the operator,
-and telling the bounded ones from the unbounded ones is the hard part: it is a
-qualitative property of an infinite-dimensional space, not something a finite computation
-reads off directly.
-
-The contribution is an **index extending Gelfand numbers to potentially unbounded
-operators**, together with the proof that **where that index stabilises identifies the
-unbounded point evaluations.** Gelfand numbers are a classical way of measuring how far
-a bounded operator is from being approximable by finite-rank ones; the extension carries
-that measurement into a setting where the operator may not be bounded at all, and the
-stabilisation point of the resulting sequence becomes a detector. A qualitative question
-turns into one that a sequence of computable quantities answers.
-
-**Computational side, in Maple.** In the polynomial basis the multiplication operator has
-a **Hessenberg matrix** representation — almost triangular, one subdiagonal — and the
-truncations of that matrix are what can actually be computed. Their **singular values**
-are the numerical evidence: they are the finite-dimensional quantities the index is built
-from, and watching them across truncations is how the stabilisation is observed rather
-than merely proved.
+**Reproduction status.** Standalone Maple worksheets are not currently included.
+The repository contains LaTeX sources and existing figures; a clean manuscript
+and slide build has not been verified.
 
 ## BSc thesis — zeros of Sobolev orthogonal polynomials
 
-The same objects from the other end: **algorithms to compute and visualise the zero
-sets**, and the connection back to **operator norms**.
+*Zeros of Sobolev Orthogonal Polynomials: Visualization and Analysis* · **9.4/10**
 
-Computing the zeros is a numerical problem that the loss of the classical location
-guarantee makes genuinely awkward — you cannot start from "they are in the interval and
-they are simple", because in general they are neither. Visualising them across families
-and across the parameters of the inner product is what makes the behaviour legible: how
-the zeros move as the mass `λ` grows, when they leave the interval, what happens at the
-points where the derivatives are evaluated. Relating that picture back to the norm of the
-multiplication operator is the bridge to the analytical work above.
+**Problem.** Adding derivative terms changes classical zero-localisation
+arguments. The work investigates zero configurations and their relationship to
+multiplication-operator norms.
 
-## How this reads outside pure mathematics
+**Computational contribution.** Maple algorithms construct polynomial families,
+compute and visualise their zeros, and compare zero localisation with operator
+norms and singular values. Experiments include real and complex support
+configurations and support the formulation and investigation of conjectures.
+The manuscript distinguishes numerical observations from proven results.
 
-The habit is the transferable part.
+**Public evidence.** [Repository and overview](https://github.com/Gabotelli/sobolev-orthogonal-polynomials) ·
+[Maple worksheet](https://github.com/Gabotelli/sobolev-orthogonal-polynomials/blob/main/maple/tfg7.mw) ·
+[Main manuscript source](https://github.com/Gabotelli/sobolev-orthogonal-polynomials/blob/main/latex/tfg_latex_etsiinf-2023.02.20/tfg_etsiinf_plantilla.tex) ·
+[Maple inventory](https://github.com/Gabotelli/sobolev-orthogonal-polynomials/blob/main/docs/maple-inventory.md).
 
-- **Stating the problem is most of the work.** "When is this operator bounded" is not the
-  question you are handed; it is the question you arrive at after deciding what actually
-  governs the behaviour you care about.
-- **Prefer a computable criterion to a correct description.** An index whose stabilisation
-  point you can observe is worth more than an exact characterisation you cannot evaluate.
-- **The numerical side is evidence, not decoration.** Hessenberg truncations and their
-  singular values are where a claim about an infinite-dimensional operator becomes
-  something you can look at.
+**Reproduction status.** Four `.mw` worksheets and a `.maple` workbook are
+available. The remaining 55 `.m` files are serialized states, not independent
+programs. Some worksheets depend on saved states or external reads; a portable
+regeneration of every experiment and figure has not been verified.
 
-## Tools
+## Authorship and tools
 
-Maple for the symbolic and numerical work on operators, matrix representations and
-orthogonal polynomials. Python (NumPy) elsewhere.
+This work is connected to `EGS26`, an article not yet published, prepared jointly with my thesis supervisors, Carmen Escribano and Raquel Gonzalo. Work associated with that article is collaborative; this page does not attribute all of its results to me alone.
 
-## Full text
+The theses are my academic work. Cited research, university templates and
+included routines retain their respective attribution; this summary does not
+claim that every result or routine is original. Maple is used for the thesis
+computations, and LaTeX for the manuscripts and defense material.
 
-Not published here. Available on request — [suarez.gabriel03@gmail.com](mailto:suarez.gabriel03@gmail.com).
+Compiled PDFs are not currently included in these repositories. For enquiries:
+[suarez.gabriel03@gmail.com](mailto:suarez.gabriel03@gmail.com).
 
 ---
 
