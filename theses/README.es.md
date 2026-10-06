@@ -2,106 +2,95 @@
 
 [English](README.md) · **Español**
 
-`Universidad Politécnica de Madrid` · `Matemática pura` · `TFG + TFM`
+Universidad Politécnica de Madrid · Grado en Matemáticas e Informática · Máster Universitario en Matemáticas Avanzadas
 
-Dos trabajos en la misma línea: **polinomios ortogonales de Sobolev**, abordados primero
-por sus ceros y después por el operador que los genera. Resumidos aquí para quien no es
-especialista. Los enunciados formales, las demostraciones y la bibliografía están en las
-propias memorias, que no se publican en este repositorio.
+Mis dos trabajos estudian los polinomios ortogonales de Sobolev: primero sus
+ceros y después el operador de multiplicación y su representación matricial.
+Los repositorios públicos enlazados contienen las fuentes matemáticas y el
+material computacional disponible. Esta página resume su alcance para quien
+quiera valorar mi trabajo.
 
-## El escenario, y por qué no es rutinario
+## TFM — operadores de multiplicación en espacios de Sobolev discretos
 
-Los polinomios ortogonales clásicos vienen de un producto interior que solo pesa valores:
+*Análisis espectral y matricial del operador de multiplicación en espacios de
+Sobolev discretos* · **9,5/10**
 
-```
-⟨f, g⟩ = ∫ f(x) g(x) dμ(x)
-```
+**Problema.** En un producto interno de polinomios con términos discretos de
+derivadas, la multiplicación $Dp(z)=zp(z)$ puede no estar acotada. El trabajo
+estudia cómo las restricciones de codimensión finita controlan esa dificultad
+y cómo se refleja en secciones matriciales finitas.
 
-Un producto interior de **Sobolev** pesa además derivadas. En el caso *discreto*, los
-términos de derivada son evaluaciones en un número finito de puntos:
+**Trabajo matemático.** La memoria estudia un índice de tipo Gelfand $Q_k(D)$,
+definido mediante el ínfimo de las normas de restricción a subespacios de
+polinomios de codimensión a lo sumo $k$, admitiendo el valor $+\infty$.
+Es la perspectiva de restricciones utilizada en los números de Gelfand.
 
-```
-⟨f, g⟩ = ∫ f(x) g(x) dμ(x) + Σ  λ_k · f^(j_k)(c_k) · g^(j_k)(c_k)
-```
+Para la configuración formada por la medida normalizada de una circunferencia
+de radio $R$ y $N$ átomos distintos de primera derivada con pesos unitarios,
+sea $m$ el número de átomos sobre la circunferencia o fuera de ella. La memoria
+establece:
 
-Ese añadido pequeño elimina dos garantías que la teoría clásica regala:
+- $Q_k(D)=+\infty$ para $0\le k<m$;
+- $Q_k(D)$ es finito para $m\le k<N$;
+- $Q_k(D)=R$ para $k\ge N$.
 
-- **Los ceros ya no tienen por qué quedarse dentro del intervalo de ortogonalidad.**
-  Pueden salirse de él, y pueden salirse de la recta real. Todo lo construido sobre el
-  argumento clásico de localización —reglas de cuadratura, cotas de aproximación— hay que
-  rederivarlo en vez de heredarlo.
-- **La multiplicación por `x`, el operador `f ↦ x·f`, ya no tiene por qué ser acotada.**
-  En el caso clásico es el objeto bien portado sobre el que descansa toda la teoría. Aquí
-  su acotación es una pregunta, y la respuesta depende de los puntos `c_k`, de los órdenes
-  `j_k` y de las masas `λ_k`.
+El primer índice finito es, por tanto, $Q_m(D)$. El resultado corresponde a
+esta configuración; no es un detector universal para cualquier producto
+interno de Sobolev. Conviene distinguir la primera finitud de la igualdad
+eventual con $R$.
 
-Las dos preguntas son la misma pregunta. La norma del operador de multiplicación es lo
-que confina los ceros; si el operador no es acotado, el argumento de confinamiento
-desaparece.
+**Trabajo computacional.** Las rutinas de Maple estudian representaciones
+finitas de Hessenberg y sus valores singulares. Los autovalores de las secciones
+principales proporcionan los ceros de los polinomios ortogonales
+correspondientes; la memoria relaciona los límites de los valores singulares
+ordenados con $Q_k(D)$. Los cálculos finitos ilustran estos resultados y no
+demuestran por sí solos afirmaciones asintóticas.
 
-## TFM — el operador de multiplicación en espacios de Sobolev discretos
+**Evidencia pública.** [Repositorio y resumen](https://github.com/Gabotelli/sobolev-multiplication-operators) ·
+[Fuente de la memoria](https://github.com/Gabotelli/sobolev-multiplication-operators/blob/master/Plantilla%20TFM/main.tex) ·
+[Resultados para la circunferencia](https://github.com/Gabotelli/sobolev-multiplication-operators/blob/master/Plantilla%20TFM/chapters/capitulo3-estabilizacion.tex) ·
+[Fuente de la defensa](https://github.com/Gabotelli/sobolev-multiplication-operators/blob/master/Plantilla%20TFM/presentacion/defensa.tex).
 
-Un análisis espectral y matricial de ese operador: **acotación, evaluaciones puntuales y
-localización de ceros.**
-
-El objeto que lo conecta todo es el funcional de **evaluación puntual**, `f ↦ f^(j)(c)`.
-Cuáles de esos funcionales son acotados en el espacio es exactamente lo que decide el
-comportamiento del operador, y distinguir los acotados de los no acotados es la parte
-difícil: es una propiedad cualitativa de un espacio de dimensión infinita, no algo que
-un cálculo finito lea directamente.
-
-La aportación es un **índice que extiende los números de Gelfand a operadores
-potencialmente no acotados**, junto con la demostración de que **el punto donde ese
-índice se estabiliza identifica las evaluaciones puntuales no acotadas.** Los números de
-Gelfand son una forma clásica de medir cuánto dista un operador acotado de poder
-aproximarse por operadores de rango finito; la extensión lleva esa medición a un
-escenario donde el operador puede no ser acotado en absoluto, y el punto de
-estabilización de la sucesión resultante se convierte en un detector. Una pregunta
-cualitativa pasa a ser una que responde una sucesión de cantidades computables.
-
-**Parte computacional, en Maple.** En la base polinómica el operador de multiplicación
-tiene una representación como matriz de **Hessenberg** —casi triangular, con una sola
-subdiagonal— y lo que se puede calcular de verdad son las truncaciones de esa matriz. Sus
-**valores singulares** son la evidencia numérica: son las cantidades de dimensión finita
-con las que se construye el índice, y observarlas a lo largo de las truncaciones es cómo
-se ve la estabilización, no solo cómo se demuestra.
+**Estado de reproducción.** Los worksheets independientes de Maple todavía no
+están incluidos. El repositorio contiene fuentes LaTeX y figuras existentes;
+no se ha verificado una compilación limpia de la memoria y las diapositivas.
 
 ## TFG — ceros de polinomios ortogonales de Sobolev
 
-Los mismos objetos desde el otro extremo: **algoritmos para calcular y visualizar los
-conjuntos de ceros**, y la conexión de vuelta con las **normas de operadores**.
+*Ceros de polinomios ortogonales de Sobolev: visualización y análisis* · **9,4/10**
 
-Calcular los ceros es un problema numérico que la pérdida de la garantía clásica de
-localización vuelve genuinamente incómodo: no puedes partir de "están en el intervalo y
-son simples", porque en general no son ni lo uno ni lo otro. Visualizarlos a lo largo de
-familias y de los parámetros del producto interior es lo que hace legible el
-comportamiento: cómo se mueven los ceros al crecer la masa `λ`, cuándo abandonan el
-intervalo, qué ocurre en los puntos donde se evalúan las derivadas. Relacionar esa imagen
-con la norma del operador de multiplicación es el puente hacia el trabajo analítico de
-arriba.
+**Problema.** Los términos de derivadas cambian los argumentos clásicos de
+localización de ceros. El trabajo estudia las configuraciones de ceros y su
+relación con las normas del operador de multiplicación.
 
-## Cómo se lee esto fuera de la matemática pura
+**Aportación computacional.** Los algoritmos de Maple construyen familias de
+polinomios, calculan y visualizan sus ceros y comparan su localización con normas
+de operadores y valores singulares. Los experimentos incluyen configuraciones
+de soporte real y complejo y permiten formular e investigar conjeturas.
+La memoria distingue las observaciones numéricas de los resultados demostrados.
 
-Lo transferible es el hábito.
+**Evidencia pública.** [Repositorio y resumen](https://github.com/Gabotelli/sobolev-orthogonal-polynomials) ·
+[Worksheet de Maple](https://github.com/Gabotelli/sobolev-orthogonal-polynomials/blob/main/maple/tfg7.mw) ·
+[Fuente de la memoria](https://github.com/Gabotelli/sobolev-orthogonal-polynomials/blob/main/latex/tfg_latex_etsiinf-2023.02.20/tfg_etsiinf_plantilla.tex) ·
+[Inventario de Maple](https://github.com/Gabotelli/sobolev-orthogonal-polynomials/blob/main/docs/maple-inventory.md).
 
-- **Enunciar el problema es la mayor parte del trabajo.** "Cuándo es acotado este
-  operador" no es la pregunta que te entregan; es a la que llegas después de decidir qué
-  gobierna de verdad el comportamiento que te importa.
-- **Antes un criterio computable que una descripción correcta.** Un índice cuyo punto de
-  estabilización puedes observar vale más que una caracterización exacta que no puedes
-  evaluar.
-- **La parte numérica es evidencia, no adorno.** Las truncaciones de Hessenberg y sus
-  valores singulares son donde una afirmación sobre un operador de dimensión infinita se
-  convierte en algo que puedes mirar.
+**Estado de reproducción.** Se publican cuatro worksheets `.mw` y un workbook
+`.maple`. Los 55 archivos `.m` restantes son estados serializados, no programas
+independientes. Algunos worksheets utilizan estados guardados o lecturas
+externas; no se ha verificado una regeneración portable de todos los experimentos
+y figuras.
 
-## Herramientas
+## Autoría y herramientas
 
-Maple para el trabajo simbólico y numérico sobre operadores, representaciones matriciales
-y polinomios ortogonales. Python (NumPy) en lo demás.
+Este trabajo está vinculado a `EGS26`, un artículo todavía no publicado, elaborado conjuntamente con mis tutoras, Carmen Escribano y Raquel Gonzalo. El trabajo asociado a ese artículo es colaborativo; esta página no me atribuye en exclusiva todos sus resultados.
 
-## Texto completo
+Las tesis son mi trabajo académico. Los trabajos citados, las plantillas de la
+universidad y las rutinas incluidas conservan su atribución; este resumen no
+afirma que todos los resultados o rutinas sean originales. Maple se utiliza para
+los cálculos y LaTeX para las memorias y el material de defensa.
 
-No se publica aquí. Disponible a petición — [suarez.gabriel03@gmail.com](mailto:suarez.gabriel03@gmail.com).
+Los repositorios no incluyen actualmente los PDF compilados. Para consultas:
+[suarez.gabriel03@gmail.com](mailto:suarez.gabriel03@gmail.com).
 
 ---
 
